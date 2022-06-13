@@ -1,0 +1,12 @@
+[
+   {
+"port_name": "COM5",
+"baudrate": 115200, 
+"day":[7,6,5],
+"dayOfWeek":["Sunday","Monday","Tuesday"],
+"members": [
+{"lee":0},{"choi":100},{"park":1000}
+],
+"code":[true,false,true,false,false,true,false,true]
+}
+  ]

@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prjEzServoPlusR", "prjEzServoPlusR\prjEzServoPlusR.vcxproj", "{288CE718-F0DD-49AF-9CC1-72AD317CE5F6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prjAp", "..\..\..\reusable_sw\prjAp\prjAp\prjAp.vcxproj", "{3C177DF8-5EC3-4212-9526-0E59EC985A6A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testerPeelVinylAttach", "..\..\..\reusable_sw\MfcDlgPrjTesterPeelVinyl\testerPeelVinylAttach\testerPeelVinylAttach.vcxproj", "{46ADB059-BD51-4D1A-865C-E142671C1D8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{288CE718-F0DD-49AF-9CC1-72AD317CE5F6}.Debug|x64.ActiveCfg = Debug|x64
+		{288CE718-F0DD-49AF-9CC1-72AD317CE5F6}.Debug|x64.Build.0 = Debug|x64
+		{288CE718-F0DD-49AF-9CC1-72AD317CE5F6}.Debug|x86.ActiveCfg = Debug|Win32
+		{288CE718-F0DD-49AF-9CC1-72AD317CE5F6}.Debug|x86.Build.0 = Debug|Win32
+		{288CE718-F0DD-49AF-9CC1-72AD317CE5F6}.Release|x64.ActiveCfg = Release|x64
+		{288CE718-F0DD-49AF-9CC1-72AD317CE5F6}.Release|x64.Build.0 = Release|x64
+		{288CE718-F0DD-49AF-9CC1-72AD317CE5F6}.Release|x86.ActiveCfg = Release|Win32
+		{288CE718-F0DD-49AF-9CC1-72AD317CE5F6}.Release|x86.Build.0 = Release|Win32
+		{3C177DF8-5EC3-4212-9526-0E59EC985A6A}.Debug|x64.ActiveCfg = Debug|x64
+		{3C177DF8-5EC3-4212-9526-0E59EC985A6A}.Debug|x86.ActiveCfg = Debug|Win32
+		{3C177DF8-5EC3-4212-9526-0E59EC985A6A}.Debug|x86.Build.0 = Debug|Win32
+		{3C177DF8-5EC3-4212-9526-0E59EC985A6A}.Release|x64.ActiveCfg = Release|x64
+		{3C177DF8-5EC3-4212-9526-0E59EC985A6A}.Release|x86.ActiveCfg = Release|Win32
+		{3C177DF8-5EC3-4212-9526-0E59EC985A6A}.Release|x86.Build.0 = Release|Win32
+		{46ADB059-BD51-4D1A-865C-E142671C1D8B}.Debug|x64.ActiveCfg = Debug|x64
+		{46ADB059-BD51-4D1A-865C-E142671C1D8B}.Debug|x86.ActiveCfg = Debug|Win32
+		{46ADB059-BD51-4D1A-865C-E142671C1D8B}.Debug|x86.Build.0 = Debug|Win32
+		{46ADB059-BD51-4D1A-865C-E142671C1D8B}.Release|x64.ActiveCfg = Release|x64
+		{46ADB059-BD51-4D1A-865C-E142671C1D8B}.Release|x86.ActiveCfg = Release|Win32
+		{46ADB059-BD51-4D1A-865C-E142671C1D8B}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0BDBF153-13BA-4028-918B-1201A79769A1}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{6c19d721-544b-4ca6-b09f-738e78a8da1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hw">
+      <UniqueIdentifier>{59233597-1009-4518-aa2d-156a5e2322a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system">
+      <UniqueIdentifier>{5685b6a8-a08e-46f6-b9e9-db6458aeb0ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui">
+      <UniqueIdentifier>{eeff05f1-d99a-49f7-af1f-2c8e16f44491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{ca7b6075-b61e-48ee-afd5-50d3e32a10db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hw\motor">
+      <UniqueIdentifier>{a40139b9-11cc-4198-8047-25a8e0810ca1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\ap">
+      <UniqueIdentifier>{a6af6935-51dc-46a3-9c7d-3c86cf2b5c32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\control">
+      <UniqueIdentifier>{ff7cfe34-143c-48d3-ab16-8338be0f96bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\engine">
+      <UniqueIdentifier>{e5bca4af-ab8b-43d0-ace7-f5e6179ec778}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\interface">
+      <UniqueIdentifier>{da5fe145-92f2-4919-8e7b-9ad2d26fffc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\_inc">
+      <UniqueIdentifier>{4acfa235-98cd-424b-bd2f-8b272df4c5f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hw\_inc">
+      <UniqueIdentifier>{75f17d59-0553-4cd1-ba15-7bf5481e1ccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hw\SerialComm">
+      <UniqueIdentifier>{189e5d46-137f-470b-9ed4-684fa91fe6d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hw\Ethernet">
+      <UniqueIdentifier>{38687b04-b368-4a4d-b90b-0f7b1a6b2d28}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="prjEzServoPlusR.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="prjEzServoPlusRDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\tapMain.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="system\system.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="system\system_def.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="system\interface\IAxis.h">
+      <Filter>system\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="system\interface\IComm.h">
+      <Filter>system\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="system\interface\Icommon.h">
+      <Filter>system\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="system\interface\IIO.h">
+      <Filter>system\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="system\_inc\binary.h">
+      <Filter>system\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="system\_inc\def_err.h">
+      <Filter>system\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="system\_inc\def_obj.h">
+      <Filter>system\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="system\_inc\def_prj.h">
+      <Filter>system\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="system\_inc\system_dat.h">
+      <Filter>system\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="system\_inc\system_event.h">
+      <Filter>system\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="system\_inc\system_io.h">
+      <Filter>system\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="system\_inc\system_log.h">
+      <Filter>system\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="system\_inc\system_obj.h">
+      <Filter>system\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="system\_inc\system_timer.h">
+      <Filter>system\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="system\_inc\system_util.h">
+      <Filter>system\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="hw\_inc\comport_serial.h">
+      <Filter>hw\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="hw\_inc\io_fastech.h">
+      <Filter>hw\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="hw\_inc\motor_fastech.h">
+      <Filter>hw\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="hw\_inc\motor_fastech_reg.h">
+      <Filter>hw\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="hw\_inc\netSocket.h">
+      <Filter>hw\_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="hw\_inc\SerialComm.h">
+      <Filter>hw\_inc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="prjEzServoPlusR.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="prjEzServoPlusRDlg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\tapMain.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="system\system.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="system\system_dat.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="system\system_io.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="system\system_log.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="system\system_obj.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="system\system_timer.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="system\system_util.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="hw\SerialComm\comport_serial.cpp">
+      <Filter>hw\SerialComm</Filter>
+    </ClCompile>
+    <ClCompile Include="hw\SerialComm\SerialComm.cpp">
+      <Filter>hw\SerialComm</Filter>
+    </ClCompile>
+    <ClCompile Include="hw\Ethernet\netSocket.cpp">
+      <Filter>hw\Ethernet</Filter>
+    </ClCompile>
+    <ClCompile Include="hw\motor\motor_fastech.cpp">
+      <Filter>hw\motor</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="prjEzServoPlusR.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\prjEzServoPlusR.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\prjEzServoPlusR.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="toDoList.txt" />
+  </ItemGroup>
+</Project>
