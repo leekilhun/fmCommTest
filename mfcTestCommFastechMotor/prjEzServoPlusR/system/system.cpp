@@ -121,6 +121,7 @@ errno_t apSystem::Initialize(openExe_cb cd_increase)
 
   m_pCfgDat = new conf_dat();
   m_pCfgDat->LoadData();
+  m_pCfgDat->PrintData();
 
 
   Table_IO* io  = new Table_IO;

@@ -8,25 +8,6 @@
  *  data  객체
  */
 
-#define SYS_DAT_KEY_STR_MAX              PRJ_NAME_STR_LENGTH_MAX
-#define SYS_DAT_NAME_STR_MAX             PRJ_NAME_STR_LENGTH_MAX
-#define SYS_DAT_VALUE_STR_MAX            PRJ_NAME_STR_LENGTH_MAX
-
-#define SYS_DAT_ARG_TBL_CNT_MAX          64
-#define SYS_DAT_PARSING_LINE_STR_MAX		 64
-
-#define SYS_DAT_JSON_DATA_MAX            1024
-enum class valueType_e
-{
-  none,
-  string,
-  integer,
-  realnumber,
-  boolian,
-  key_value,
-  type_max
-};
-
 
 /****************************************************
  *	
@@ -37,43 +18,6 @@ enum class valueType_e
 /// </summary>
 struct conf_dat
 {
-  struct dat_t
-  {
-    char  section[SYS_DAT_KEY_STR_MAX]{};
-    char  item[SYS_DAT_NAME_STR_MAX]{};
-    char  str_value[SYS_DAT_VALUE_STR_MAX]{};
-    valueType_e  type = valueType_e::none;
-  };
-
-
-  struct keyValue_t {
-    char  key[SYS_DAT_KEY_STR_MAX]{};
-    valueType_e type = valueType_e::none;       // 토큰 종류
-    union {                                     // 두 종류 중 한 종류만 저장할 것이므로 공용체로 만듦
-      bool   yesorno;                           // boolian 타입
-      char  str_value[SYS_DAT_VALUE_STR_MAX]{}; // 문자열 포인터
-      int    number;
-      double realnumber;                        // 실수형 숫자
-    };
-    keyValue_t() = default;
-  };
-
-
-  struct json_t {
-    char  key[SYS_DAT_KEY_STR_MAX]{};
-    valueType_e type = valueType_e::none;       // 토큰 종류
-    union {                                     // 두 종류 중 한 종류만 저장할 것이므로 공용체로 만듦
-      bool   yesorno;                           // boolian 타입
-      char  str_value[SYS_DAT_VALUE_STR_MAX]{}; // 문자열 포인터
-      int    number;
-      double realnumber;                        // 실수형 숫자
-      keyValue_t* key_value;
-    };
-    bool is_array = false;       // 현재 토큰이 배열인지 표시
-  };
-
-
-
 
   enum class addr_e //
   {
@@ -83,24 +27,26 @@ struct conf_dat
     _max
   };
 
-  json_t m_sysCfgDat[SYS_DAT_JSON_DATA_MAX];
-  uint32_t m_incNo ;
+
+  parser::json* m_pParser;
   char m_dirFile[PRJ_FILE_DIR_STR_MAX]{};
 
   conf_dat(char* file_info = "./conf_dat.json");
   virtual ~conf_dat();
 
   int LoadData();
+  
   void PrintData();
-  void WriteData(conf_dat::addr_e addr, conf_dat::json_t data);
-  conf_dat::json_t ReadData(conf_dat::addr_e addr);
-  conf_dat::json_t* GetData(conf_dat::addr_e addr);
+  void WriteData(conf_dat::addr_e addr, parser::json_t data);
+ 
+  parser::json_t ReadData(conf_dat::addr_e addr);
+  parser::json_t* GetData(conf_dat::addr_e addr); 
 
 
 private:
-  void parsing(char* p_data, uint32_t size);
-  void parsingArray(char* p_data, uint32_t size);
-  bool putData(char** pdata, uint8_t cnt);
+  //void parsing(char* p_data, uint32_t size);
+  //void parsingArray(char* p_data, uint32_t size);
+  //bool putData(char** pdata, uint8_t cnt);
 
 };
 

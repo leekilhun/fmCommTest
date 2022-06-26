@@ -5,8 +5,9 @@
  * system_util.h
  * 
  * 작성자 : 이길훈
- * 22.04.04 
+ * 22.06.25 
  * - system 구조 전역에서 사용될 함수 모음
+ * - 06.25 - json 파싱 func
  */
 
 
@@ -17,6 +18,290 @@
 #include <binary.h>
 
 using namespace std;
+
+/// <summary>
+/// data파일에서 데이터를 추출
+/// json 타입 적용
+/// </summary>
+namespace parser
+{
+  constexpr int _KEY_STR_MAX    = PRJ_NAME_STR_LENGTH_MAX;
+  constexpr int _NAME_STR_MAX   = PRJ_NAME_STR_LENGTH_MAX;
+  constexpr int _VALUE_STR_MAX  = PRJ_NAME_STR_LENGTH_MAX;
+  constexpr int _ARG_CNT_MAX    = 64;
+  constexpr int _PARSING_LINE_STR_MAX = 64;
+  constexpr int _JSON_DATA_MAX = 1024;
+
+  enum class valueType_e
+  {
+    none,
+    string,
+    integer,
+    realnumber,
+    boolian,
+    key_value,
+    type_max
+  };
+
+
+  struct key_t 
+  {
+    char  key[_KEY_STR_MAX]{};
+    valueType_e type = valueType_e::none;       // 토큰 종류
+    union {                                     // 두 종류 중 한 종류만 저장할 것이므로 공용체로 만듦
+      bool   yesorno;                           // boolian 타입
+      char  str_value[_VALUE_STR_MAX]{};        // 문자열 포인터
+      int    number;
+      double realnumber;                        // 실수형 숫자
+    };
+    key_t() = default;
+  };
+
+  struct json_t 
+  {
+    char  key[_KEY_STR_MAX]{};
+    valueType_e type = valueType_e::none;       // 토큰 종류
+    union {                                     // 두 종류 중 한 종류만 저장할 것이므로 공용체로 만듦
+      bool   yesorno;                           // boolian 타입
+      char  str_value[_VALUE_STR_MAX]{}; // 문자열 포인터
+      int    number;
+      double realnumber;                        // 실수형 숫자
+      key_t* key_value;
+    };
+    bool is_array = false;       // 현재 토큰이 배열인지 표시
+  };
+
+  /// <summary>
+  /// json타입 데이터 파싱 클래스
+  /// </summary>
+  class json
+  {
+    json_t* m_pData;
+    uint32_t m_incNo;
+    uint32_t m_dataMax;
+    char m_dirFile[PRJ_FILE_DIR_STR_MAX]{};
+
+
+  public:
+    json(char* file_info,uint32_t data_max) :m_pData(new json_t[data_max]), m_incNo(0), m_dirFile{}
+    {
+      sprintf_s(m_dirFile, PRJ_FILE_DIR_STR_MAX - 1, file_info);
+      m_dataMax = data_max;
+    }
+
+    virtual ~json()
+    {
+      while (m_incNo > 0)
+      {
+        if (m_pData[m_incNo].type == valueType_e::key_value)
+        {
+          delete m_pData[m_incNo].key_value;
+        }
+        --m_incNo;
+      }
+
+      delete[] m_pData;
+    }
+
+
+    int LoadData();
+    void PrintData() {
+      string total_table;
+      string key_ref;
+      bool is_arry_head = false;
+      //bool is_key_head = false;
+      //int* col_max_wide = new int[max_col_size];
+      // 
+      // 맨 상단에 열 정보 표시
+      total_table = '{' ;
+      total_table += "\r\n";
+      total_table += "// Print Data Start";
+      total_table += "\r\n";
+      for (uint32_t i = 0; i < m_incNo; i++) {
+        if (i > 0 && !is_arry_head)
+        {
+          total_table += ",\r\n";
+        }
+        
+        if (m_pData[i].is_array )
+        {           
+          if (is_arry_head == false)
+          {
+            is_arry_head = true;
+            total_table += putStr(m_pData[i].key) + ':' + "\r\n" + '[';
+          }
+          else
+          {
+            if (!is_contaArry(key_ref, m_pData[i].key))
+            {
+              //is_arry_head = false;
+              total_table += "],\r\n";
+              total_table += putStr(m_pData[i].key) + ':' + "\r\n" + '[';
+            }
+            else
+            {
+              total_table += ',';
+            }
+          }
+
+          key_ref = m_pData[i].key;
+          if (m_pData[i].type == valueType_e::key_value)
+          {
+           /* if (is_key_head)
+            {
+              total_table += ',';
+            }
+            is_key_head = true;*/
+
+            total_table += '{';
+            total_table += putStr(m_pData[i].key_value->key) + ':';
+            total_table += putData(m_pData[i].key_value->type, i, true);
+            total_table += '}';
+          }
+          else
+          {
+            total_table += putData(m_pData[i].type, i);
+          } 
+
+        }
+        else
+        {
+          if (is_arry_head)
+          {
+            is_arry_head = false;
+            total_table += "],\r\n";
+          }
+
+          /*if (is_key_head)
+          {
+            is_key_head = false;
+          }*/
+
+          total_table += putStr(m_pData[i].key)+':';
+
+          total_table += putData(m_pData[i].type, i);  
+        }
+      
+      }
+      if (is_arry_head)
+      {
+        total_table += "]\r\n";
+      }
+      total_table += "// Print Data End \r\n";
+      total_table += '}';
+    
+    }
+    void WriteData(uint32_t addr, json_t data) {
+
+    }
+    void AddData(uint32_t addr, json_t data) {
+
+    }
+    void DelData(uint32_t addr, json_t data) {
+
+    }
+
+
+    json_t ReadData(uint32_t addr) {
+      return m_pData[addr];
+    }
+    json_t* GetData(uint32_t addr) {
+      return &m_pData[addr];
+    }
+
+  private:
+
+    void parsing(char* p_data, uint32_t size);
+    void parsingArray(char* p_data, uint32_t size);
+    bool putData(char** pdata, uint8_t cnt);
+
+
+    inline bool is_contaArry(const string ref, const string check)
+    {
+      return (ref.compare(check)==0)?true:false;
+    }
+
+    inline string putData(valueType_e type, uint32_t index, bool is_key_t = false)
+    {
+      string ret_str;
+      switch (type)
+      {
+      case valueType_e::string:
+        ret_str = putStr(m_pData[index].str_value);
+        if (is_key_t)
+        {
+          ret_str = putStr(m_pData[index].key_value->str_value);
+        }
+        break;
+
+      case valueType_e::integer:
+        ret_str = putInt(m_pData[index].number);
+        if (is_key_t)
+        {
+          ret_str = putInt(m_pData[index].key_value->number);
+        }
+        break;
+
+      case valueType_e::boolian:
+        ret_str = putBool(m_pData[index].yesorno);
+        if (is_key_t)
+        {
+          ret_str = putBool(m_pData[index].key_value->yesorno);
+        }
+        break;
+
+      case valueType_e::realnumber:
+        ret_str = putReal(m_pData[index].realnumber);
+        if (is_key_t)
+        {
+          ret_str = putReal(m_pData[index].key_value->realnumber);
+        }
+        break;
+
+      case valueType_e::key_value:
+        break;
+
+      default:
+        break;
+      }
+      return ret_str;
+    }
+
+    inline string putStr(const string in_str)
+    {
+      return ('\"' + in_str + '\"');
+    }
+
+    inline string putInt(const int in_int)
+    {
+      return std::to_string(in_int);
+    }
+
+    inline string putBool(const bool in_bool)
+    {
+      return in_bool?"true" :"false";
+    }
+
+    inline string putReal(const double in_real)
+    {
+      return std::to_string(in_real);
+    }
+
+
+
+  };
+
+
+
+}
+
+
+
+
+
+
+
+
 
 
 /// <summary>
