@@ -32,6 +32,25 @@
 #include <afxsock.h>            // MFC 소켓 확장
 
 
+// 콘솔창으로 로그 출력
+#ifdef _DEBUG
+
+#ifdef UNICODE
+#pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")
+#else
+#pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
+#endif
+
+#include <iostream>
+
+#define _USE_LOG_OUT
+
+#ifdef _USE_LOG_OUT
+#define LOG_OUT(fmt, ...)    std::cout << "test" << std::endl
+#else
+#define logPrintf(fmt, ...)
+#endif
+#endif
 
 
 

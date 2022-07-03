@@ -193,6 +193,7 @@
     <ClInclude Include="hw\_inc\comport_serial.h" />
     <ClInclude Include="hw\_inc\io_fastech.h" />
     <ClInclude Include="hw\_inc\motor_fastech.h" />
+    <ClInclude Include="hw\_inc\motor_fastech_comm.h" />
     <ClInclude Include="hw\_inc\motor_fastech_reg.h" />
     <ClInclude Include="hw\_inc\netSocket.h" />
     <ClInclude Include="hw\_inc\SerialComm.h" />
@@ -225,6 +226,7 @@
     <ClCompile Include="hw\motor\motor_fastech.cpp" />
     <ClCompile Include="hw\SerialComm\comport_serial.cpp" />
     <ClCompile Include="hw\SerialComm\SerialComm.cpp" />
+    <ClCompile Include="hw\_inc\motor_fastech_comm.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

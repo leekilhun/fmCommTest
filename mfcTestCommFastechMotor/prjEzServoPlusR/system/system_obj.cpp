@@ -13,7 +13,9 @@ static ObjDataDef::Info_t systemObj[] =
   { false,ObjType::HL_IO				    ,HL_IO_BASE				    ,0	,"IO"							,"./Log/IO.log"						,NULL},
   { false,ObjType::HL_SERIAL		    ,HL_SERIAL_BASE		    ,0	,"Serial_1"				,"./Log/Serial.log"				,NULL},
   { false,ObjType::HL_ETHERNET      ,HL_ETHERNET_BASE	    ,0	,"Ethernet_1"			,"./Log/Ethernet.log"			,NULL},
-  { false,ObjType::HL_MOTION		    ,HL_AXIS_BASE				  ,0	,"FestechMotor"		,"./Log/Axis.log"					,NULL},
+  { false,ObjType::HL_MOTION		    ,HL_AXIS_BASE				  ,0	,"FMotor_jig"		,"./Log/Axis.log"					,NULL},
+  { false,ObjType::HL_MOTION		    ,HL_AXIS_BASE				  ,1	,"FMotor_roller"		,"./Log/Axis.log"					,NULL},
+  { false,ObjType::HL_MOTION		    ,HL_AXIS_BASE				  ,2	,"FMotor_zAxis"		,"./Log/Axis.log"					,NULL},
   { false,ObjType::ML_OP_PANEL	    ,ML_OPPANEL_BASE	    ,0	,"Op Panel"				,"./Log/OpPanel.log"			,NULL},
   { false,ObjType::PL_AUTO_MANAGER	,TRS_AUTOMANAGER_BASE	,0	,"Auto Manager"		,"./Log/AutoManager.log"	,NULL},
 };

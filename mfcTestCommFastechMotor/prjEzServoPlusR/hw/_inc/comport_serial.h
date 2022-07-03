@@ -99,6 +99,12 @@ private:
 
 	void threadStop(void);
 	void threadRun(void);
+
+	/// <summary>
+	/// polling을 통해 수신된 정보를 확인한다.
+	/// 수신 여부(available)
+	/// </summary>
+	/// <param name=""></param>
 	void threadJob(void);
 	static UINT threadFunc(LPVOID pParam);
 public:

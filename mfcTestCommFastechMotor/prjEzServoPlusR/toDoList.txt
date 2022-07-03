@@ -1,4 +1,6 @@
 2022.06.14 기본 프로젝트 생성. 
+2022.07.01 모터 구동 
 
 
+TODO - motor serial community RS485
 TODO - log 

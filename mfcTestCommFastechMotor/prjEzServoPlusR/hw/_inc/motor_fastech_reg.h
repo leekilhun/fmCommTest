@@ -46,8 +46,11 @@
 
 
 
-
-
+/// <summary>
+/// fastech motor ezi-servo plus-r 
+/// V8.0
+/// parameter register
+/// </summary>
 class fm_parameter
 {
 public:

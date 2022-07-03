@@ -1,5 +1,20 @@
 #pragma once
 #include "motor_fastech_reg.h"
+#include "motor_fastech_comm.h"
+
+/*
+   h/w     vendor
+             | comm_if   -------  serial
+             | register     |---  ethernet
+
+   hw의 adstraction interface 포함하며
+   컨트롤러와 interface할 포트 클래스 (시리얼 또는 이더넷)
+   멤버 요소로 가지 있다.
+   통신으로 수신된 정보를 파싱하는 클래스를 포함
+
+*/
+
+
 
 #define FASTECH_CMD_MAX_DATA_LENGTH  248
 #define FASTECH_IO_ADDR_INPUT_MAX      9
@@ -165,7 +180,7 @@ public:
 
   struct cfg_t
   {
-    //IComm* pComm{};
+    IComm* pComm{};
     uint8_t AxisId{};
     sysTimer* pSysTimer{};
   };
@@ -177,16 +192,17 @@ private:
   int m_sysTimerId;
   sysTimer* m_pSysTimer;
   cfg_t m_Cfg;
+  fm_parameter m_motorParam;
+  IComm* m_pComm;
+
 
   /*
-  IComm* m_pComm;
   fm_parameter m_motorParam;
   _Scheduler* m_jobScheduler;
   timer::_ms m_timer;
   uint32_t m_responseTime;
   bool m_useISR;
   */
-
 
   /****************************************************
    *	Constructor
@@ -220,6 +236,21 @@ public:
   bool  IsAxisDone();
   errno_t  ClearState();
   uint32_t  GetMotorState();
+
+  int Move(int cmd_pos, uint32_t cmd_vel = 100, uint32_t acc = 100, uint32_t decel = 100);
+  //축을 정지한다. (한개의 축에 대한 정지)
+  int Stop();
+  //축을 등속이동에 대해 정지한다.
+  int VStop();
+  // 축을 비상정지한다.
+  int EStop();
+
+  int JogMove(uint32_t cmd_vel = 1000, bool is_cw = true);
+  int JogMove(uint32_t jog_pos, uint32_t cmd_vel = 1000, bool is_cw = true);
+
+
+
+
 
 
   /* IIO  함수*/

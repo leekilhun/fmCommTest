@@ -28,6 +28,8 @@
 /* hw object*/
 #include "_inc/SerialComm.h"
 #include "_inc/netSocket.h"
+#include "hw/_inc/motor_fastech_comm.h"
+
 /* engine object*/
 
 /* control object*/
@@ -54,6 +56,12 @@ class apSystem
   SerialComm* m_pSerialComm;
   netSocket* m_pNetComm;
 
+
+  fm_comm*       m_pMotorComm;
+  fastech_motor* m_pMotor[3];
+
+public:
+  sysTimer* m_sysTimer;
 
  /****************************************************
   *	Constructor

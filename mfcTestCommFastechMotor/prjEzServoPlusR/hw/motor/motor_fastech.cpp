@@ -104,9 +104,8 @@ const errno_t JL_MOTOR_ERR_SUCCESS = 0;
 
 fastech_motor::fastech_motor(common::Attribute_t common_data, cfg_t cfg):
   Icommon(common_data), m_AxisId(0), m_sysTimerId(0), m_Cfg(cfg)
-  , m_pSysTimer(nullptr)
+  , m_pSysTimer(nullptr), m_motorParam(), m_pComm(nullptr)
 {
-
   m_pSysTimer = m_Cfg.pSysTimer;
   sysTimer::obj_t st_data = {};
   st_data.cnt_ms = 100;
@@ -124,6 +123,8 @@ fastech_motor::~fastech_motor()
 
 void fastech_motor::receiveData(void* obj, void* w_parm, void* l_parm)
 {
+  fastech_motor* p_this = (fastech_motor * )obj;
+  //uint8_t data = (uint8_t)l_parm;
 }
 
 void fastech_motor::timerFunc(void* obj)
@@ -503,6 +504,36 @@ uint32_t fastech_motor::GetMotorState()
   //  return 0;
 
   return SendCommand(cmd_t::GET_MOTION_STATUS, 0, 0);
+}
+
+int fastech_motor::Move(int cmd_pos, uint32_t cmd_vel, uint32_t acc, uint32_t decel)
+{
+  return 0;
+}
+
+int fastech_motor::Stop()
+{
+  return 0;
+}
+
+int fastech_motor::VStop()
+{
+  return 0;
+}
+
+int fastech_motor::EStop()
+{
+  return 0;
+}
+
+int fastech_motor::JogMove(uint32_t cmd_vel, bool is_cw)
+{
+  return 0;
+}
+
+int fastech_motor::JogMove(uint32_t jog_pos, uint32_t cmd_vel, bool is_cw)
+{
+  return 0;
 }
 
 bool fastech_motor::IsOn(uint32_t addr)

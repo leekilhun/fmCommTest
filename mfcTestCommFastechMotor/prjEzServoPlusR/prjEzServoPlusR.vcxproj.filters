@@ -147,6 +147,9 @@
     <ClInclude Include="hw\_inc\SerialComm.h">
       <Filter>hw\_inc</Filter>
     </ClInclude>
+    <ClInclude Include="hw\_inc\motor_fastech_comm.h">
+      <Filter>hw\_inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="prjEzServoPlusR.cpp">
@@ -192,6 +195,9 @@
       <Filter>hw\Ethernet</Filter>
     </ClCompile>
     <ClCompile Include="hw\motor\motor_fastech.cpp">
+      <Filter>hw\motor</Filter>
+    </ClCompile>
+    <ClCompile Include="hw\_inc\motor_fastech_comm.cpp">
       <Filter>hw\motor</Filter>
     </ClCompile>
   </ItemGroup>

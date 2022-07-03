@@ -22,7 +22,10 @@ errno_t SerialComport::openPort(char* port_name, uint32_t baud)
   COMMTIMEOUTS timeouts;
   DWORD dwError;
 
-  m_Serialcfg.serial_handle = CreateFileA(port_name, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+  char name[MAX_PATH] = {0,};
+  sprintf_s(name,MAX_PATH,"//./%s", port_name);
+
+  m_Serialcfg.serial_handle = CreateFileA(name, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
   if (m_Serialcfg.serial_handle == INVALID_HANDLE_VALUE)
   {
     TRACE("Error opening serial port!\n");
@@ -266,7 +269,7 @@ UINT SerialComport::threadFunc(LPVOID pParam)
   {
     pThis->threadJob();
 
-    util::delay(2);
+    util::delay(10);
   }
 
   TRACE("Serial Comport Thread Terminatet\n\r");
