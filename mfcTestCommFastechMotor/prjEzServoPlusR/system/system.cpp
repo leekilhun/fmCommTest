@@ -22,7 +22,7 @@ void apSystem::init()
 {
   m_pObjinfo = nullptr;
   m_sysTimer = nullptr;
-  
+  m_pSysLog = nullptr;
   m_pCfgDat = nullptr;
   m_pApDat = nullptr;
   m_pAxisDat = nullptr;
@@ -50,6 +50,7 @@ void apSystem::destroy()
   if (m_pObjinfo) { delete m_pObjinfo; } m_pObjinfo = nullptr;
   if (m_sysTimer) { delete m_sysTimer; } m_sysTimer = nullptr;
 
+  if (m_pSysLog) { delete m_pSysLog; } m_pSysLog = nullptr;
 
   if (m_pCfgDat) { delete m_pCfgDat; }  m_pCfgDat = nullptr;
   if (m_pApDat) { delete m_pApDat; } m_pApDat = nullptr;
@@ -130,8 +131,6 @@ errno_t apSystem::_createBasicHWComponents()
 
 errno_t apSystem::_createEngineComponets()
 {
-  std::cout << "test" << std::endl;
-
   {
     fastech_motor::cfg_t cfg = {};
      cfg.AxisId = 1;
@@ -167,6 +166,8 @@ errno_t apSystem::Initialize(openExe_cb cd_increase)
 {
   m_pObjinfo = new sysObj();
   m_sysTimer = new sysTimer();
+  m_pSysLog = new sysLog();
+
   m_pCfgDat = new conf_dat();
   m_pCfgDat->LoadData();
   m_pCfgDat->PrintData();

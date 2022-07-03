@@ -3,9 +3,9 @@
 
 /*
  * system_util.h
- * 
+ *
  * 작성자 : 이길훈
- * 22.06.25 
+ * 22.06.25
  * - system 구조 전역에서 사용될 함수 모음
  * - 06.25 - json 파싱 func
  */
@@ -25,10 +25,10 @@ using namespace std;
 /// </summary>
 namespace parser
 {
-  constexpr int _KEY_STR_MAX    = PRJ_NAME_STR_LENGTH_MAX;
-  constexpr int _NAME_STR_MAX   = PRJ_NAME_STR_LENGTH_MAX;
-  constexpr int _VALUE_STR_MAX  = PRJ_NAME_STR_LENGTH_MAX;
-  constexpr int _ARG_CNT_MAX    = 64;
+  constexpr int _KEY_STR_MAX = PRJ_NAME_STR_LENGTH_MAX;
+  constexpr int _NAME_STR_MAX = PRJ_NAME_STR_LENGTH_MAX;
+  constexpr int _VALUE_STR_MAX = PRJ_NAME_STR_LENGTH_MAX;
+  constexpr int _ARG_CNT_MAX = 64;
   constexpr int _PARSING_LINE_STR_MAX = 64;
   constexpr int _JSON_DATA_MAX = 1024;
 
@@ -44,7 +44,7 @@ namespace parser
   };
 
 
-  struct key_t 
+  struct key_t
   {
     char  key[_KEY_STR_MAX]{};
     valueType_e type = valueType_e::none;       // 토큰 종류
@@ -57,7 +57,7 @@ namespace parser
     key_t() = default;
   };
 
-  struct json_t 
+  struct json_t
   {
     char  key[_KEY_STR_MAX]{};
     valueType_e type = valueType_e::none;       // 토큰 종류
@@ -83,7 +83,7 @@ namespace parser
 
 
   public:
-    json(char* file_info,uint32_t data_max) :m_pData(new json_t[data_max]), m_incNo(0), m_dirFile{}
+    json(char* file_info, uint32_t data_max) :m_pData(new json_t[data_max]), m_incNo(0), m_dirFile{}
     {
       sprintf_s(m_dirFile, PRJ_FILE_DIR_STR_MAX - 1, file_info);
       m_dataMax = data_max;
@@ -113,7 +113,7 @@ namespace parser
       //int* col_max_wide = new int[max_col_size];
       // 
       // 맨 상단에 열 정보 표시
-      total_table = '{' ;
+      total_table = '{';
       total_table += "\r\n";
       total_table += "// Print Data Start";
       total_table += "\r\n";
@@ -122,9 +122,9 @@ namespace parser
         {
           total_table += ",\r\n";
         }
-        
-        if (m_pData[i].is_array )
-        {           
+
+        if (m_pData[i].is_array)
+        {
           if (is_arry_head == false)
           {
             is_arry_head = true;
@@ -147,11 +147,11 @@ namespace parser
           key_ref = m_pData[i].key;
           if (m_pData[i].type == valueType_e::key_value)
           {
-           /* if (is_key_head)
-            {
-              total_table += ',';
-            }
-            is_key_head = true;*/
+            /* if (is_key_head)
+             {
+               total_table += ',';
+             }
+             is_key_head = true;*/
 
             total_table += '{';
             total_table += putStr(m_pData[i].key_value->key) + ':';
@@ -161,7 +161,7 @@ namespace parser
           else
           {
             total_table += putData(m_pData[i].type, i);
-          } 
+          }
 
         }
         else
@@ -177,11 +177,11 @@ namespace parser
             is_key_head = false;
           }*/
 
-          total_table += putStr(m_pData[i].key)+':';
+          total_table += putStr(m_pData[i].key) + ':';
 
-          total_table += putData(m_pData[i].type, i);  
+          total_table += putData(m_pData[i].type, i);
         }
-      
+
       }
       if (is_arry_head)
       {
@@ -189,7 +189,7 @@ namespace parser
       }
       total_table += "// Print Data End \r\n";
       total_table += '}';
-    
+
     }
     void WriteData(uint32_t addr, json_t data) {
 
@@ -218,7 +218,7 @@ namespace parser
 
     inline bool is_contaArry(const string ref, const string check)
     {
-      return (ref.compare(check)==0)?true:false;
+      return (ref.compare(check) == 0) ? true : false;
     }
 
     inline string putData(valueType_e type, uint32_t index, bool is_key_t = false)
@@ -279,7 +279,7 @@ namespace parser
 
     inline string putBool(const bool in_bool)
     {
-      return in_bool?"true" :"false";
+      return in_bool ? "true" : "false";
     }
 
     inline string putReal(const double in_real)
@@ -566,7 +566,7 @@ namespace buffer
 namespace conv
 {
   int DwToInt(uint8_t* bytes);
- 
+
   uint32_t DwToUint(uint8_t* bytes);
 }
 
@@ -673,7 +673,7 @@ namespace file
   // 2. dst dir 없다면 생성하고
   // 3. src file과 동일한 dst file이 있으면 비교해 같으면 생략
   // 4. 하위 디렉토리 동일하게 처리
-  
+
   /// <summary>
   ///  src 디렉토리를 dest 디렉토리롤 복사 
   /// </summary>
@@ -1097,7 +1097,7 @@ namespace flag
     inline bool Get(uint8_t bank, bit_e bit) {
       return m_byte[bank][bit];
     }
-   
+
     inline uint8_t GetSize() const {
       return m_size;
     }

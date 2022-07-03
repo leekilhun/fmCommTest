@@ -44,7 +44,7 @@ class apSystem
   ****************************************************/
   char m_ProjectDir[_MAX_DIR];
   sysObj* m_pObjinfo;
-
+  sysLog* m_pSysLog;
   conf_dat* m_pCfgDat;
   ap_dat* m_pApDat;
   axis_dat* m_pAxisDat;

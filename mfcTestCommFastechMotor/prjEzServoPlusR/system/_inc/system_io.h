@@ -57,8 +57,10 @@ public:
         delete m_pIn[m_inCnt];
       }
       m_pIn[m_inCnt--] = nullptr;
-
     }
+    delete m_pIn[m_inCnt];
+    m_pIn[m_inCnt] = nullptr;
+
     while (m_outCnt)
     {
       if (m_pOut[m_outCnt])
@@ -67,6 +69,8 @@ public:
       }
       m_pOut[m_outCnt--] = nullptr;
     }
+    delete m_pOut[m_outCnt];
+    m_pOut[m_outCnt] = nullptr;
   }
 
   /****************************************************
